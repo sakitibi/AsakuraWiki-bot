@@ -1,0 +1,22 @@
+# Render 用: Discord Bot + Supabase 常駐監視
+# ルートに置くだけでデプロイ可能
+
+services:
+  - type: worker       # HTTP ポート不要のバックグラウンド常駐
+    name: asakura-bot
+    env: node
+    plan: free         # Free / Starter / Standard 選択可
+    branch: main       # デプロイ対象ブランチ
+    buildCommand: npm install
+    startCommand: node index.js
+    autoDeploy: true   # main push 時に自動デプロイ
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        fromDatabase: true   # Render dashboardの値を参照
+      - key: SUPABASE_URL
+        fromDatabase: true
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        fromDatabase: true
+      - key: NODE_ENV
+        value: production
+        fromDatabase: false
