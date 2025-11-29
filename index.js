@@ -97,7 +97,7 @@ const channel = supabase
       // ▼ ここから通知処理
       let msg = null;
       if(payload.new.value){
-        msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}\n[Amongus部屋に参加の際は13nin利用規約](${juusanninTermsURL})が適応されます`;
+        msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}\n[Amongus部屋に参加の際は13nin利用規約](${juusanninTermsURL})が適応されます\nすでに開始中の場合がございます。`;
       } else {
         msg = "@everyone 最新のAmongus招待コードは存在しません";
       }
