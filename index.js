@@ -6,6 +6,7 @@ require("dotenv").config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const CHANNEL_ID = "1358349516067180674";
 const TARGET_ID = "640a4587-5be7-4727-aee6-e9493050f022";
+const juusanninTermsURL = "https://sakitibi-com9.webnode.jp/page/10";
 
 // ▼ Supabase
 const supabase = createClient(
@@ -63,7 +64,7 @@ client.on("messageCreate", async (message) => {
     try {
       await message.delete();
       await message.channel.send(
-        `⚠️ ${message.author} パターン: \`${hit}\` は13nin利用規約に違反しています`
+        `⚠️ ${message.author} パターン: \`${hit}\` は[13nin利用規約](${juusanninTermsURL})に違反しています`
       );
     } catch (err) {
       console.error("NGワード処理エラー:", err);
@@ -94,7 +95,7 @@ const channel = supabase
       // ▼ ここから通知処理
       let msg = null;
       if(payload.new.value){
-        msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}`;
+        msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}\n[Amongus部屋に参加の際は13nin利用規約](${juusanninTermsURL})が適応されます`;
       } else {
         msg = "@everyone 最新のAmongus招待コードは存在しません";
       }
