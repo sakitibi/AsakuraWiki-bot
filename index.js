@@ -88,12 +88,16 @@ const channel = supabase
       // ▼ UUID が一致する row だけ通知
       if (
         newRow.id !== TARGET_ID ||
-        payload.old.value === payload.new.value ||
-        !payload.new.value
+        payload.old.value === payload.new.value
     ) return;
 
       // ▼ ここから通知処理
-      const msg = `最新のAmongus招待コード: ${payload.new.value}`;
+      let msg = null;
+      if(payload.new.value){
+        msg = `最新のAmongus招待コード: ${payload.new.value}`;
+      } else {
+        msg = "最新のAmongus招待コードは存在しません";
+      }
       const ch = await client.channels.fetch(CHANNEL_ID);
       ch.send(msg);
     }
