@@ -99,7 +99,7 @@ const channel = supabase
       if(payload.new.value){
         msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}\n[Amongus部屋に参加の際は誰がホストでも13nin利用規約](${juusanninTermsURL})が適応されます\nすでに開始中の場合がございます。`;
       } else {
-        msg = "@everyone 最新のAmongus招待コードは存在しません";
+        msg = "最新のAmongus招待コードは存在しません";
       }
       const ch = await client.channels.fetch(CHANNEL_ID);
       ch.send(msg);
