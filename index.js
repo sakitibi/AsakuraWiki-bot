@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const { createClient } = require("@supabase/supabase-js");
 const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 
 // ▼ Discord Bot
