@@ -48,7 +48,7 @@ function loadNgPatterns() {
   }
 }
 
-let NG_WORDS = loadNgPatterns();
+let NG_PATTERNS = loadNgPatterns();
 
 // メッセージ監視
 client.on("messageCreate", async (message) => {
