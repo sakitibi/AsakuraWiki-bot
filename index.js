@@ -97,7 +97,7 @@ async function listenSupabaseChange() {
         // ▼ ここから通知処理
         let msg = null;
         if (payload.new.value) {
-          msg = `<@&1360380890441715712> # 最新のAmongus招待コード: **${payload.new.value}**\n## [Amongus部屋に参加の際は誰がホストでも13nin利用規約](${juusanninTermsURL})が適応されます\n## すでに満員や開始中の場合がございます。`;
+          msg = `<@&1360380890441715712>\n# 最新のAmongus招待コード: **${payload.new.value}**\n## [Amongus部屋に参加の際は誰がホストでも13nin利用規約](${juusanninTermsURL})が適応されます\n## すでに満員や開始中の場合がございます。`;
         } else {
           msg = "最新のAmongus招待コードは存在しません";
         }
