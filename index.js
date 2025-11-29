@@ -94,9 +94,9 @@ const channel = supabase
       // ▼ ここから通知処理
       let msg = null;
       if(payload.new.value){
-        msg = `最新のAmongus招待コード: ${payload.new.value}`;
+        msg = `@everyone 最新のAmongus招待コード: ${payload.new.value}`;
       } else {
-        msg = "最新のAmongus招待コードは存在しません";
+        msg = "@everyone 最新のAmongus招待コードは存在しません";
       }
       const ch = await client.channels.fetch(CHANNEL_ID);
       ch.send(msg);
