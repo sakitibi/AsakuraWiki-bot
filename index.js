@@ -2,7 +2,9 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const { createClient } = require("@supabase/supabase-js");
 const loadNgPatterns = require("./ngwords")
 const listenSupabaseChange = require("./roomcode");
-require("dotenv").config();
+require("dotenv").config({
+  path: "/Applications/NextTs/AsakuraWiki/discord_bot/.env"
+});
 
 // ▼ Discord Bot
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
