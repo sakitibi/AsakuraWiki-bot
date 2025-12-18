@@ -1,0 +1,20 @@
+{
+  "name": "discord_bot",
+  "version": "2.0.57",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "13ninstudio, Inc",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.86.0",
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.2.3",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
