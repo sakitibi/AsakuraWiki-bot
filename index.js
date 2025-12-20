@@ -1,5 +1,4 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-const { createClient } = require("@supabase/supabase-js");
 const loadNgPatterns = require("./ngwords")
 const listenSupabaseChange = require("./roomcode");
 require("dotenv").config({
@@ -10,15 +9,9 @@ require("dotenv").config({
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const juusanninTermsURL = "https://sakitibi-com9.webnode.jp/page/10";
 
-// ▼ Supabase
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY  // ← Realtime を受信する場合はサービスキー推奨
-);
-
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
-  listenSupabaseChange(supabase);
+  listenSupabaseChange(client, juusanninTermsURL);
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
