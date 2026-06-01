@@ -37,8 +37,9 @@ function listenSupabaseChangeWikis() {
                 const NewTimeStamp = payload.new?.updated_at;
                 const OldTimeStamp = payload.old?.updated_at;
                 if (OldTimeStamp === NewTimeStamp) return;
-                exec(`osascript -e 'display notification "${Slug} が更新されました。"'`, () => {
-                    console.log(`${Slug} が更新されました。`);
+                const updatedMessage = `${WikiSlug}/${PageSlug} が更新されました。`;
+                exec(`osascript -e 'display notification "${updatedMessage}"'`, () => {
+                    console.log(updatedMessage);
                 });
             }
         )
