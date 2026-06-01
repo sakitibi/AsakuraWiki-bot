@@ -1,5 +1,6 @@
 const { createClient } = require("@supabase/supabase-js");
-const { exec } = require('child_process')
+const { exec } = require('child_process');
+const { appendFile } = require("fs/promises");
 
 require("dotenv").config({
     path: "/Applications/discord_bot/.env"
@@ -41,6 +42,7 @@ function listenSupabaseChangeWikis() {
                 exec(`osascript -e 'display notification "${updatedMessage}"'`, () => {
                     console.log(updatedMessage);
                 });
+                await appendFile("./wiki_edit.log", `${NewTimeStamp} ${WikiSlug}/${PageSlug}\n`, 'utf8');
             }
         )
         .subscribe((status) => {

@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: "discord_bot",
-            script: "index.js",
+            script: "start.js",
             cwd: "/Applications/discord_bot",
             env: {
                 NODE_ENV: "production"
