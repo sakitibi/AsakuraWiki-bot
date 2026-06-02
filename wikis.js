@@ -9,7 +9,7 @@ require("dotenv").config({
 let supabase;
 let realtimeChannel;
 
-function listenSupabaseChangeWikis() {
+async function listenSupabaseChangeWikis() {
     // 🔒 グローバル保持
     supabase = createClient(
         process.env.SUPABASE_URL,
@@ -23,7 +23,7 @@ function listenSupabaseChangeWikis() {
         }
     );
 
-    realtimeChannel = supabase
+    realtimeChannel = await supabase
         .channel("realtime:wikis")
         .on(
             "postgres_changes",
@@ -45,8 +45,11 @@ function listenSupabaseChangeWikis() {
                 await appendFile("./wiki_edit.log", `${NewTimeStamp} ${WikiSlug}/${PageSlug}\n`, 'utf8');
             }
         )
-        .subscribe((status) => {
+        .subscribe(async(status) => {
             console.log("📡 Realtime status:", status);
+            if (status !== "SUBSCRIBED") {
+                await listenSupabaseChangeWikis();
+            }
         });
 
     console.log("✅ Supabase Realtime subscribe requested");

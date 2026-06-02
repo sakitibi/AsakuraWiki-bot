@@ -9,7 +9,7 @@ const TARGET_ID = "640a4587-5be7-4727-aee6-e9493050f022";
 let supabase;
 let realtimeChannel;
 
-function listenSupabaseChange(client, juusanninTermsURL) {
+async function listenSupabaseChange(client, juusanninTermsURL) {
     // 🔒 グローバル保持
     supabase = createClient(
         process.env.SUPABASE_URL,
@@ -23,7 +23,7 @@ function listenSupabaseChange(client, juusanninTermsURL) {
         }
     );
 
-    realtimeChannel = supabase
+    realtimeChannel = await supabase
         .channel("realtime:wiki_variables")
         .on(
             "postgres_changes",
@@ -64,8 +64,11 @@ function listenSupabaseChange(client, juusanninTermsURL) {
                 await ch.send(msg);
             }
         )
-        .subscribe((status) => {
+        .subscribe(async(status) => {
             console.log("📡 Realtime status:", status);
+            if (status !== "SUBSCRIBED") {
+                await listenSupabaseChange(client, juusanninTermsURL);
+            }
         });
 
     console.log("✅ Supabase Realtime subscribe requested");

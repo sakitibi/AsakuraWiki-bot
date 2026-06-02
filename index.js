@@ -9,10 +9,10 @@ require("dotenv").config({
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const juusanninTermsURL = "https://sakitibi-com9.webnode.jp/page/10";
 
-client.once("ready", () => {
+client.once("ready", async () => {
     console.log(`Logged in as ${client.user.tag}`);
-    listenSupabaseChange(client, juusanninTermsURL);
-    listenSupabaseChangeWikis();
+    await listenSupabaseChange(client, juusanninTermsURL);
+    await listenSupabaseChangeWikis();
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
@@ -39,8 +39,3 @@ client.on("messageCreate", async (message) => {
         }
     }
 });
-
-setInterval(() => {
-    listenSupabaseChange(client, juusanninTermsURL);
-    listenSupabaseChangeWikis();
-}, 1000 * 60 * 30);
