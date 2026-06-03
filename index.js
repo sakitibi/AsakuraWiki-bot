@@ -39,3 +39,7 @@ client.on("messageCreate", async (message) => {
         }
     }
 });
+
+client.on('error', (error) => {
+    console.error('Discordクライアントでエラーが発生しました:', error);
+});
