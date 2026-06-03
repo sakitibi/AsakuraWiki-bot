@@ -66,9 +66,6 @@ async function listenSupabaseChange(client, juusanninTermsURL) {
         )
         .subscribe(async(status) => {
             console.log("📡 Realtime status:", status);
-            if (status !== "SUBSCRIBED") {
-                await listenSupabaseChange(client, juusanninTermsURL);
-            }
         });
 
     console.log("✅ Supabase Realtime subscribe requested");

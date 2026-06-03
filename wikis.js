@@ -47,9 +47,6 @@ async function listenSupabaseChangeWikis() {
         )
         .subscribe(async(status) => {
             console.log("📡 Realtime status:", status);
-            if (status !== "SUBSCRIBED") {
-                await listenSupabaseChangeWikis();
-            }
         });
 
     console.log("✅ Supabase Realtime subscribe requested");
