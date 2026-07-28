@@ -45,7 +45,7 @@ async function listenSupabaseChange(client, juusanninTermsURL) {
                 const msg = newValue
                 ? `<@&1360380890441715712>
 # 最新のAmongus招待コード: **${newValue}**
-## Amongus部屋に参加の際は**誰がホストでも**[13nin利用規約](${juusanninTermsURL})が適応されます
+## Amongus部屋に参加の際は**誰がホストでも**[14nin利用規約](${juusanninTermsURL})が適応されます
 ## すでに満員や開始中の場合がございます。`.replace(/\n\t    /g, "")
                 : "最新のAmongus招待コードは存在しません";
 

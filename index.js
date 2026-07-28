@@ -32,7 +32,7 @@ client.on("messageCreate", async (message) => {
         try {
             await message.delete();
             await message.channel.send(
-                `⚠️ ${message.author} パターン: \`${hit}\` は[13nin利用規約](${juusanninTermsURL})に違反しています`
+                `⚠️ ${message.author} パターン: \`${hit}\` は[14nin利用規約](${juusanninTermsURL})に違反しています`
             );
         } catch (err) {
             console.error("NGワード処理エラー:", err);
